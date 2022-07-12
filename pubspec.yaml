@@ -1,0 +1,63 @@
+name: flutter_rpg
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.5 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  get: ^4.6.5
+  get_storage: ^2.0.3
+  url_launcher: ^6.1.4
+  intl: ^0.17.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.9.3
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/layout/
+
+  fonts:
+    - family: Dosis
+      fonts:    
+        - asset: assets/fonts/dosis/Dosis-ExtraLight.ttf
+          weight: 200      
+        - asset: assets/fonts/dosis/Dosis-Light.ttf
+          weight: 300      
+        - asset: assets/fonts/dosis/Dosis-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/dosis/Dosis-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/dosis/Dosis-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/dosis/Dosis-Bold.ttf
+          weight: 700        
+        - asset: assets/fonts/dosis/Dosis-ExtraBold.ttf
+          weight: 800
+    - family: Lato
+      fonts:    
+        - asset: assets/fonts/lato/Lato-Thin.ttf
+          weight: 100      
+        - asset: assets/fonts/lato/Lato-Light.ttf
+          weight: 300      
+        - asset: assets/fonts/lato/Lato-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/lato/Lato-Bold.ttf
+          weight: 700        
+        - asset: assets/fonts/lato/Lato-Black.ttf
+          weight: 900          
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: assets/images/logo.png
