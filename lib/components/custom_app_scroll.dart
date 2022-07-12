@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/controllers/language_controller.dart';
 import 'package:flutter_rpg/controllers/sliver_app_bar_controller.dart';
+import 'package:flutter_rpg/i18n/app_translation.dart';
+import 'package:flutter_rpg/models/language_model.dart';
 import 'package:get/get.dart';
 
 class CustomAppScroll extends StatelessWidget {
@@ -48,18 +50,18 @@ class CustomAppScroll extends StatelessWidget {
                 : null,
             actions: [
               DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
+                child: DropdownButton<LanguageModel>(
                   value: languageController.selectedLanguage.value,
-                  items: languageController.languages
+                  items: AppTranslation.languages
                       .map(
-                        (item) => DropdownMenuItem(
-                          value: item.language,
+                        (item) => DropdownMenuItem<LanguageModel>(
+                          value: item,
                           child: Text(item.language),
                         ),
                       )
                       .toList(),
-                  onChanged: (String? value) =>
-                      languageController.changeLanguage(value!),
+                  onChanged: (LanguageModel? languageModel) =>
+                      languageController.changeLanguage(languageModel!),
                 ),
               ),
             ],
