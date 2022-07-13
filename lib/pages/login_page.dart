@@ -28,18 +28,6 @@ class LoginPage extends GetView<LoginController> {
             widgets: [
               Stack(
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(ImageConstant.background),
-                        colorFilter: ColorFilter.mode(
-                          Color.fromRGBO(156, 39, 176, 0.4),
-                          BlendMode.overlay,
-                        ),
-                      ),
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Column(
@@ -51,7 +39,7 @@ class LoginPage extends GetView<LoginController> {
                             height: 100,
                             child: Image.asset(
                               ImageConstant.logo,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         ),

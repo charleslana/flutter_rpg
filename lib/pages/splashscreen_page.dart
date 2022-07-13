@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/constants/image_constant.dart';
 import 'package:flutter_rpg/controllers/splashscreen_controller.dart';
 import 'package:get/get.dart';
 
@@ -9,10 +10,19 @@ class SplashscreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<SplashscreenController>();
 
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Text('SplashscreenPage'),
+        body: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Center(
+            child: SizedBox(
+              height: 200,
+              child: Image.asset(
+                ImageConstant.charlesLogo,
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
         ),
       ),
     );
