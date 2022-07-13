@@ -7,7 +7,7 @@ class SplashscreenController extends GetxController {
   @override
   void onInit() {
     Timer(
-      const Duration(seconds: 2), //2
+      const Duration(seconds: 2),
       () => Get.offNamed<dynamic>(AppRoutes.login),
     );
     super.onInit();
