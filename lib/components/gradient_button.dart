@@ -25,7 +25,7 @@ class GradientButton extends StatelessWidget {
         ),
         foregroundDecoration: callback == null
             ? BoxDecoration(
-                color: const Color.fromRGBO(158, 158, 158, 0.5),
+                color: Colors.grey,
                 backgroundBlendMode: BlendMode.saturation,
                 borderRadius: BorderRadius.circular(25),
               )
