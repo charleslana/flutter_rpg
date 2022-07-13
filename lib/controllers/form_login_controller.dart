@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FormLoginController extends GetxController {
-  RxString username = RxString('');
+  final RxString _username = RxString('');
   RxnString errorText = RxnString();
   Rxn<VoidCallback> submitFunc = Rxn<VoidCallback>();
 
   @override
   void onInit() {
     super.onInit();
-    debounce<String>(username, validations,
+    debounce<String>(_username, validations,
         time: const Duration(milliseconds: 500));
   }
+
+  String get username => _username.value;
+
+  set username(String value) => _username.value = value;
 
   Future<void> validations(String val) async {
     errorText.value = null;
@@ -46,12 +50,12 @@ class FormLoginController extends GetxController {
   }
 
   void usernameChanged(String val) {
-    username.value = val;
+    _username.value = val;
   }
 
   Future<bool> Function() submitFunction() {
     return () async {
-      print('Make database call to create ${username.value} account');
+      print('Make database call to create ${_username.value} account');
       await Future.delayed(
           const Duration(seconds: 1), () => print('User account created'));
       return true;

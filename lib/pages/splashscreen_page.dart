@@ -7,7 +7,7 @@ class SplashscreenPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(SplashscreenController());
+    Get.find<SplashscreenController>();
 
     return const SafeArea(
       child: Scaffold(

@@ -9,7 +9,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FormLoginController fx = Get.find<FormLoginController>();
+    final FormLoginController formLoginController =
+        Get.find<FormLoginController>();
 
     return SafeArea(
       child: Scaffold(
@@ -68,22 +69,23 @@ class LoginPage extends StatelessWidget {
                                 Obx(
                                   () {
                                     print(
-                                        'rebuild TextFormField ${fx.errorText.value}');
+                                        'rebuild TextFormField ${formLoginController.errorText.value}');
                                     return TextFormField(
                                       onChanged:
-                                          fx.usernameChanged, // controller func
+                                          formLoginController.usernameChanged,
                                       decoration: InputDecoration(
                                           labelText: 'Username',
-                                          errorText: fx.errorText.value // obs
-                                          ),
+                                          errorText: formLoginController
+                                              .errorText.value),
                                     );
                                   },
                                 ),
                                 const SizedBox(height: 20),
                                 Obx(
                                   () => ElevatedButton(
-                                    onPressed: fx.submitFunc.value,
-                                    child: const Text('Submit'), // obs
+                                    onPressed:
+                                        formLoginController.submitFunc.value,
+                                    child: const Text('Submit'),
                                   ),
                                 ),
                               ],
