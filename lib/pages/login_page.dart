@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rpg/components/custom_app_scroll.dart';
 import 'package:flutter_rpg/components/gradient_button.dart';
 import 'package:flutter_rpg/constants/image_constant.dart';
-import 'package:flutter_rpg/controllers/form_login_controller.dart';
+import 'package:flutter_rpg/controllers/login_controller.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends GetView<LoginController> {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final FormLoginController formLoginController =
-        Get.find<FormLoginController>();
-
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -63,32 +60,35 @@ class LoginPage extends StatelessWidget {
                           shape: BeveledRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Obx(
-                                  () {
-                                    return TextFormField(
-                                      onChanged:
-                                          formLoginController.usernameChanged,
-                                      decoration: InputDecoration(
-                                          labelText: 'E-mail',
-                                          errorText: formLoginController
-                                              .errorText.value),
-                                    );
-                                  },
-                                ),
-                                const SizedBox(height: 20),
-                                Obx(
-                                  () => GradientButton(
-                                    title: 'login.page.button',
-                                    callback:
-                                        formLoginController.submitFunc.value,
+                          child: Form(
+                            key: controller.loginFormKey,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  TextFormField(
+                                    controller: controller.emailController,
+                                    decoration: const InputDecoration(
+                                        labelText: 'E-mail'),
+                                    validator: (String? value) => controller
+                                        .validator(value, isValidEmail: true),
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(height: 20),
+                                  TextFormField(
+                                    controller: controller.passwordController,
+                                    decoration: const InputDecoration(
+                                        labelText: 'Senha'),
+                                    validator: controller.validator,
+                                    obscureText: true,
+                                  ),
+                                  const SizedBox(height: 20),
+                                  GradientButton(
+                                    title: 'login.page.button',
+                                    callback: controller.login,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
