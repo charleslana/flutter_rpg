@@ -17,12 +17,15 @@ class AppTranslation {
 
 final Map<String, String> enUS = {
   'login.page.title': 'Login',
+  'login.page.button': 'Play now',
 };
 
 final Map<String, String> ptBR = {
   'login.page.title': 'Conecte-se',
+  'login.page.button': 'Jogue agora',
 };
 
 final Map<String, String> esES = {
   'login.page.title': 'Acceso',
+  'login.page.button': 'Jugar ahora',
 };

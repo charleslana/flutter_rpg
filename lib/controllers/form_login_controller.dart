@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/interfaces/form_validator.dart';
 import 'package:get/get.dart';
 
-class FormLoginController extends GetxController {
+class FormLoginController extends GetxController with FormValidator {
   final RxString _username = RxString('');
   RxnString errorText = RxnString();
   Rxn<VoidCallback> submitFunc = Rxn<VoidCallback>();

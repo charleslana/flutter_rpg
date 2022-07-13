@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/components/custom_app_scroll.dart';
+import 'package:flutter_rpg/components/gradient_button.dart';
 import 'package:flutter_rpg/constants/image_constant.dart';
 import 'package:flutter_rpg/controllers/form_login_controller.dart';
 import 'package:get/get.dart';
@@ -65,16 +66,15 @@ class LoginPage extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(20),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Obx(
                                   () {
-                                    print(
-                                        'rebuild TextFormField ${formLoginController.errorText.value}');
                                     return TextFormField(
                                       onChanged:
                                           formLoginController.usernameChanged,
                                       decoration: InputDecoration(
-                                          labelText: 'Username',
+                                          labelText: 'E-mail',
                                           errorText: formLoginController
                                               .errorText.value),
                                     );
@@ -82,10 +82,10 @@ class LoginPage extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 20),
                                 Obx(
-                                  () => ElevatedButton(
-                                    onPressed:
+                                  () => GradientButton(
+                                    title: 'login.page.button',
+                                    callback:
                                         formLoginController.submitFunc.value,
-                                    child: const Text('Submit'),
                                   ),
                                 ),
                               ],
