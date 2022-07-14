@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/bindings/language_binding.dart';
+import 'package:flutter_rpg/bindings/loading_overlay_binding.dart';
 import 'package:flutter_rpg/bindings/login_binding.dart';
 import 'package:flutter_rpg/bindings/sliver_app_bar_binding.dart';
 import 'package:flutter_rpg/bindings/splashscreen_binding.dart';
@@ -26,6 +27,7 @@ class AppRouteGenerator {
             LanguageBinding(),
             SliverAppBarBinding(),
             LoginBinding(),
+            LoadingOverlayBinding(),
           ],
           transition: Transition.rightToLeft,
         );

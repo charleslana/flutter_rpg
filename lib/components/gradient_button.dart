@@ -14,6 +14,7 @@ class GradientButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(25),
       onTap: callback,
       child: Container(
         padding: const EdgeInsets.fromLTRB(10, 6, 10, 6),
