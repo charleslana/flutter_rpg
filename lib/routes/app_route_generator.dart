@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rpg/bindings/language_binding.dart';
 import 'package:flutter_rpg/bindings/loading_overlay_binding.dart';
 import 'package:flutter_rpg/bindings/login_binding.dart';
-import 'package:flutter_rpg/bindings/sliver_app_bar_binding.dart';
+import 'package:flutter_rpg/bindings/register_binding.dart';
 import 'package:flutter_rpg/bindings/splashscreen_binding.dart';
 import 'package:flutter_rpg/pages/login_page.dart';
 import 'package:flutter_rpg/pages/register_page.dart';
@@ -26,7 +26,6 @@ class AppRouteGenerator {
           settings: settings,
           bindings: [
             LanguageBinding(),
-            SliverAppBarBinding(),
             LoadingOverlayBinding(),
             LoginBinding(),
           ],
@@ -38,8 +37,8 @@ class AppRouteGenerator {
           settings: settings,
           bindings: [
             LanguageBinding(),
-            SliverAppBarBinding(),
             LoadingOverlayBinding(),
+            RegisterBinding(),
           ],
           transition: Transition.rightToLeft,
         );

@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/controllers/loading_overlay_controller.dart';
 import 'package:flutter_rpg/enums/toast_enum.dart';
+import 'package:flutter_rpg/interfaces/custom_app_scroll_abstract.dart';
 import 'package:flutter_rpg/interfaces/form_validator.dart';
 import 'package:flutter_rpg/utils/functions.dart';
 import 'package:get/get.dart';
 
-class LoginController extends GetxController with FormValidator {
+class LoginController extends GetxController
+    with FormValidator
+    implements CustomAppScrollAbstract {
   final loginFormKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final LoadingOverlayController loadingOverlayController =
       Get.find<LoadingOverlayController>();
+  ScrollController scrollController = ScrollController();
+  RxDouble offset = 0.0.obs;
 
   @override
   void onInit() {
     emailController.text = '';
+    listenScrollController();
     super.onInit();
   }
 
@@ -22,7 +28,22 @@ class LoginController extends GetxController with FormValidator {
   void onClose() {
     emailController.dispose();
     passwordController.dispose();
+    scrollController.dispose();
     super.onClose();
+  }
+
+  @override
+  void goToTop() {
+    if (scrollController.hasClients) {
+      scrollController.jumpTo(scrollController.position.minScrollExtent);
+    }
+  }
+
+  @override
+  void listenScrollController() {
+    scrollController.addListener(() {
+      offset.value = scrollController.offset;
+    });
   }
 
   String? validator(String? value, {bool? isValidEmail}) {
