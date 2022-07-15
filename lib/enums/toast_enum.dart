@@ -1,0 +1,4 @@
+enum ToastEnum {
+  success,
+  error,
+}

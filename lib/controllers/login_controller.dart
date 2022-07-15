@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/controllers/loading_overlay_controller.dart';
+import 'package:flutter_rpg/enums/toast_enum.dart';
 import 'package:flutter_rpg/interfaces/form_validator.dart';
+import 'package:flutter_rpg/utils/functions.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController with FormValidator {
@@ -38,7 +40,10 @@ class LoginController extends GetxController with FormValidator {
       loadingOverlayController.isLoading.value = true;
       checkUser(emailController.text, passwordController.text).then((auth) {
         if (auth) {
-        } else {}
+          showToast('Usuário inexistente ou senha inválida', ToastEnum.error);
+        } else {
+          showToast('Conta cadastrada com sucesso', ToastEnum.success);
+        }
         loadingOverlayController.isLoading.value = false;
         passwordController.clear();
       });

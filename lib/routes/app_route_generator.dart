@@ -5,6 +5,7 @@ import 'package:flutter_rpg/bindings/login_binding.dart';
 import 'package:flutter_rpg/bindings/sliver_app_bar_binding.dart';
 import 'package:flutter_rpg/bindings/splashscreen_binding.dart';
 import 'package:flutter_rpg/pages/login_page.dart';
+import 'package:flutter_rpg/pages/register_page.dart';
 import 'package:flutter_rpg/pages/splashscreen_page.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +27,18 @@ class AppRouteGenerator {
           bindings: [
             LanguageBinding(),
             SliverAppBarBinding(),
+            LoadingOverlayBinding(),
             LoginBinding(),
+          ],
+          transition: Transition.rightToLeft,
+        );
+      case AppRoutes.register:
+        return GetPageRoute(
+          page: () => const RegisterPage(),
+          settings: settings,
+          bindings: [
+            LanguageBinding(),
+            SliverAppBarBinding(),
             LoadingOverlayBinding(),
           ],
           transition: Transition.rightToLeft,
