@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/bindings/characters_binding.dart';
 import 'package:flutter_rpg/bindings/language_binding.dart';
 import 'package:flutter_rpg/bindings/loading_overlay_binding.dart';
 import 'package:flutter_rpg/bindings/login_binding.dart';
 import 'package:flutter_rpg/bindings/register_binding.dart';
 import 'package:flutter_rpg/bindings/splashscreen_binding.dart';
+import 'package:flutter_rpg/pages/characters_page.dart';
 import 'package:flutter_rpg/pages/login_page.dart';
 import 'package:flutter_rpg/pages/register_page.dart';
 import 'package:flutter_rpg/pages/splashscreen_page.dart';
@@ -41,6 +43,17 @@ class AppRouteGenerator {
             RegisterBinding(),
           ],
           transition: Transition.rightToLeft,
+        );
+      case AppRoutes.characters:
+        return GetPageRoute(
+          page: () => const CharactersPage(),
+          settings: settings,
+          bindings: [
+            LanguageBinding(),
+            LoadingOverlayBinding(),
+            CharactersBinding(),
+          ],
+          transition: Transition.leftToRight,
         );
       default:
         return GetPageRoute(

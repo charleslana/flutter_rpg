@@ -4,7 +4,7 @@ class ThemeConstant {
   ThemeData theme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Dosis',
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: const Color(0xff26143f),
     colorScheme:
         const ColorScheme.dark().copyWith(primary: const Color(0xff745bbb)),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -25,5 +25,6 @@ class ThemeConstant {
     cardTheme: const CardTheme(
       color: Color(0xff352d5b),
     ),
+    errorColor: Colors.redAccent,
   );
 }

@@ -51,3 +51,7 @@ void navigate(String route) {
 void navigateOff(String route) {
   Get.offNamed<dynamic>(route);
 }
+
+void navigateOffAll(String route) {
+  Get.offAllNamed<dynamic>(route);
+}

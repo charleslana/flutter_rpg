@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/components/card_form.dart';
 import 'package:flutter_rpg/components/custom_app_scroll.dart';
 import 'package:flutter_rpg/components/custom_container.dart';
 import 'package:flutter_rpg/components/gradient_button.dart';
@@ -42,11 +43,8 @@ class LoginPage extends GetView<LoginController> {
                               ),
                             ),
                             const SizedBox(height: 20),
-                            Card(
-                              shape: BeveledRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Form(
+                            CardForm(
+                              widget: Form(
                                 key: controller.loginFormKey,
                                 child: Padding(
                                   padding: const EdgeInsets.all(20),
@@ -74,7 +72,7 @@ class LoginPage extends GetView<LoginController> {
                                       ),
                                       const SizedBox(height: 20),
                                       GradientButton(
-                                        title: 'login.page.button',
+                                        title: 'login.page.button'.tr,
                                         callback: controller.login,
                                       ),
                                     ],

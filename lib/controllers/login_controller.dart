@@ -3,6 +3,7 @@ import 'package:flutter_rpg/controllers/loading_overlay_controller.dart';
 import 'package:flutter_rpg/enums/toast_enum.dart';
 import 'package:flutter_rpg/interfaces/custom_app_scroll_abstract.dart';
 import 'package:flutter_rpg/interfaces/form_validator.dart';
+import 'package:flutter_rpg/routes/app_route_generator.dart';
 import 'package:flutter_rpg/utils/functions.dart';
 import 'package:get/get.dart';
 
@@ -63,7 +64,7 @@ class LoginController extends GetxController
         if (auth) {
           showToast('Usuário inexistente ou senha inválida', ToastEnum.error);
         } else {
-          showToast('Conta cadastrada com sucesso', ToastEnum.success);
+          navigateOff(AppRoutes.characters);
         }
         loadingOverlayController.isLoading.value = false;
         passwordController.clear();
