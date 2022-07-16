@@ -44,7 +44,7 @@ class CharactersPage extends GetView<CharactersController> {
                               crossAxisCount: 2,
                               mainAxisSpacing: 20,
                               crossAxisSpacing: 20,
-                              childAspectRatio: Get.width / (Get.height / 1.5),
+                              childAspectRatio: Get.width / (Get.height / 1.3),
                             ),
                             itemBuilder: (BuildContext context, int index) {
                               return Card(
