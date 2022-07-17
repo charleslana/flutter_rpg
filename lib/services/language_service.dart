@@ -16,4 +16,12 @@ class LanguageService {
     Get.updateLocale(locale);
     _saveToBox(locale.languageCode);
   }
+
+  String getLanguage() {
+    final String? languageCode = _loadFromBox();
+    if (languageCode == 'es') {
+      return 'es-ES';
+    }
+    return languageCode ?? const Locale('en', 'US').languageCode;
+  }
 }

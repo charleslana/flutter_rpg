@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rpg/components/custom_app_scroll.dart';
 import 'package:flutter_rpg/components/gradient_button.dart';
 import 'package:flutter_rpg/components/loading_overlay.dart';
-import 'package:flutter_rpg/controllers/characters_controller.dart';
-import 'package:flutter_rpg/routes/app_route_generator.dart';
+import 'package:flutter_rpg/controllers/character_controller.dart';
 import 'package:flutter_rpg/utils/functions.dart';
 import 'package:get/get.dart';
 
-class CharactersPage extends GetView<CharactersController> {
-  const CharactersPage({Key? key}) : super(key: key);
+class CharacterPage extends GetView<CharacterController> {
+  const CharacterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +61,9 @@ class CharactersPage extends GetView<CharactersController> {
                             },
                           ),
                           const SizedBox(height: 20),
-                          InkWell(
-                            onTap: () => navigateOff(AppRoutes.login),
-                            child: const Center(
+                          const InkWell(
+                            onTap: logout,
+                            child: Center(
                               child: Text('Sair'),
                             ),
                           ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/enums/toast_enum.dart';
+import 'package:flutter_rpg/routes/app_route_generator.dart';
+import 'package:flutter_rpg/services/token_service.dart';
 import 'package:get/get.dart';
 
 void showToast(String message, ToastEnum toast) {
@@ -54,4 +56,9 @@ void navigateOff(String route) {
 
 void navigateOffAll(String route) {
   Get.offAllNamed<dynamic>(route);
+}
+
+void logout() {
+  TokenService().removeToken();
+  navigateOff(AppRoutes.login);
 }

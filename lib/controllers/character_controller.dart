@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/controllers/loading_overlay_controller.dart';
 import 'package:flutter_rpg/interfaces/custom_app_scroll_abstract.dart';
-import 'package:flutter_rpg/interfaces/form_validator.dart';
 import 'package:get/get.dart';
 
-class CharactersController extends GetxController
-    with FormValidator
+class CharacterController extends GetxController
     implements CustomAppScrollAbstract {
   final LoadingOverlayController loadingOverlayController =
       Get.find<LoadingOverlayController>();

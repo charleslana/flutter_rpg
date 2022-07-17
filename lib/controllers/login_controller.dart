@@ -3,13 +3,20 @@ import 'package:flutter_rpg/controllers/loading_overlay_controller.dart';
 import 'package:flutter_rpg/enums/toast_enum.dart';
 import 'package:flutter_rpg/interfaces/custom_app_scroll_abstract.dart';
 import 'package:flutter_rpg/interfaces/form_validator.dart';
+import 'package:flutter_rpg/models/api_error_model.dart';
 import 'package:flutter_rpg/routes/app_route_generator.dart';
+import 'package:flutter_rpg/services/login_service.dart';
+import 'package:flutter_rpg/services/token_service.dart';
 import 'package:flutter_rpg/utils/functions.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController
     with FormValidator
     implements CustomAppScrollAbstract {
+  LoginController({
+    required this.loginService,
+  });
+
   final loginFormKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -17,6 +24,8 @@ class LoginController extends GetxController
       Get.find<LoadingOverlayController>();
   ScrollController scrollController = ScrollController();
   RxDouble offset = 0.0.obs;
+  LoginService loginService = LoginService();
+  TokenService tokenService = TokenService();
 
   @override
   void onInit() {
@@ -60,23 +69,28 @@ class LoginController extends GetxController
   void login() {
     if (loginFormKey.currentState!.validate()) {
       loadingOverlayController.isLoading.value = true;
-      checkUser(emailController.text, passwordController.text).then((auth) {
-        if (auth) {
-          showToast('Usuário inexistente ou senha inválida', ToastEnum.error);
-        } else {
-          navigateOff(AppRoutes.characters);
-        }
-        loadingOverlayController.isLoading.value = false;
-        passwordController.clear();
-      });
+      validateLogin(emailController.text, passwordController.text);
     }
   }
 
-  Future<bool> checkUser(String user, String password) async {
-    await Future<dynamic>.delayed(const Duration(seconds: 1));
-    if (user == 'example@example.com' && password == '123') {
-      return Future.value(true);
-    }
-    return Future.value(false);
+  Future<void> validateLogin(String email, String password) async {
+    await loginService.login(email, password).then(
+      (result) {
+        tokenService.saveToken(result.accessToken!);
+        navigateOff(AppRoutes.characters);
+        loadingOverlayController.isLoading.value = false;
+      },
+      onError: (dynamic error) {
+        loadingOverlayController.isLoading.value = false;
+        passwordController.clear();
+        final ApiErrorModel apiErrorModel = apiErrorModelFromJson(error);
+        showToast(apiErrorModel.message!, ToastEnum.error);
+      },
+    );
+  }
+
+  ApiErrorModel validateError(dynamic error) {
+    final ApiErrorModel apiErrorModel = apiErrorModelFromJson(error);
+    return apiErrorModel;
   }
 }
