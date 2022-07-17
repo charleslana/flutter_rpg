@@ -88,9 +88,4 @@ class LoginController extends GetxController
       },
     );
   }
-
-  ApiErrorModel validateError(dynamic error) {
-    final ApiErrorModel apiErrorModel = apiErrorModelFromJson(error);
-    return apiErrorModel;
-  }
 }
