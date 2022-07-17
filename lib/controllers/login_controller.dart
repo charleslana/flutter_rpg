@@ -5,6 +5,7 @@ import 'package:flutter_rpg/interfaces/custom_app_scroll_abstract.dart';
 import 'package:flutter_rpg/interfaces/form_validator.dart';
 import 'package:flutter_rpg/models/api_error_model.dart';
 import 'package:flutter_rpg/routes/app_route_generator.dart';
+import 'package:flutter_rpg/services/encrypt_service.dart';
 import 'package:flutter_rpg/services/login_service.dart';
 import 'package:flutter_rpg/utils/functions.dart';
 import 'package:get/get.dart';
@@ -24,6 +25,7 @@ class LoginController extends GetxController
   ScrollController scrollController = ScrollController();
   RxDouble offset = 0.0.obs;
   LoginService loginService = LoginService();
+  EncryptService encryptService = EncryptService();
 
   @override
   void onInit() {
@@ -74,7 +76,7 @@ class LoginController extends GetxController
   Future<void> validateLogin(String email, String password) async {
     await loginService.login(email, password).then(
       (result) {
-        result = result.copyWith(password: password);
+        result = result.copyWith(password: encryptService.encrypt(password));
         loginService.saveLogin(result);
         navigateOff(AppRoutes.characters);
         loadingOverlayController.isLoading.value = false;
