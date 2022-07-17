@@ -16,6 +16,7 @@ class AppTranslation {
 }
 
 final Map<String, String> enUS = {
+  'connection.failure': 'Failed to connect to server',
   'validation.field.empty': 'Please this field must be filled',
   'validation.field.email': 'Please, type a valid email',
   'validation.field.password.confirmation': 'Passwords must be the same',
@@ -39,6 +40,7 @@ final Map<String, String> enUS = {
 };
 
 final Map<String, String> ptBR = {
+  'connection.failure': 'Falha ao conectar no servidor',
   'validation.field.empty': 'Por favor, este campo deve ser preenchido',
   'validation.field.email': 'Por favor, digite um e-mail válido',
   'validation.field.password.confirmation': 'As senhas devem ser iguais',
@@ -62,6 +64,7 @@ final Map<String, String> ptBR = {
 };
 
 final Map<String, String> esES = {
+  'connection.failure': 'Error al conectar con el servidor',
   'validation.field.empty': 'Por favor este campo debe ser llenado',
   'validation.field.email': 'Por favor, escriba un correo electrónico válido',
   'validation.field.password.confirmation':

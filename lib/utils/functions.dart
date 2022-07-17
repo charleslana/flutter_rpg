@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/enums/toast_enum.dart';
+import 'package:flutter_rpg/models/api_error_model.dart';
 import 'package:flutter_rpg/routes/app_route_generator.dart';
-import 'package:flutter_rpg/services/token_service.dart';
+import 'package:flutter_rpg/services/login_service.dart';
 import 'package:get/get.dart';
 
 void showToast(String message, ToastEnum toast) {
@@ -59,6 +60,13 @@ void navigateOffAll(String route) {
 }
 
 void logout() {
-  TokenService().removeToken();
+  LoginService().removeLogin();
   navigateOff(AppRoutes.login);
+}
+
+String showConnectionFailure() {
+  return apiErrorModelToJson(ApiErrorModel(
+    status: '400',
+    message: 'connection.failure'.tr,
+  ));
 }

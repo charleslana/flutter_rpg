@@ -22,6 +22,9 @@ class LanguageService {
     if (languageCode == 'es') {
       return 'es-ES';
     }
-    return languageCode ?? const Locale('en', 'US').languageCode;
+    final String language = Get.deviceLocale!.languageCode != 'pt'
+        ? 'en'
+        : Get.deviceLocale!.languageCode;
+    return languageCode ?? language;
   }
 }

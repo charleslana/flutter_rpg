@@ -1,10 +1,14 @@
 import 'package:flutter_rpg/constants/text_constant.dart';
-import 'package:flutter_rpg/models/api_error_model.dart';
 import 'package:flutter_rpg/models/login_model.dart';
 import 'package:flutter_rpg/services/language_service.dart';
+import 'package:flutter_rpg/utils/functions.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LoginService extends GetConnect {
+  final GetStorage _box = GetStorage();
+  final String _key = 'login';
+
   @override
   void onInit() {
     final LanguageService languageService = LanguageService();
@@ -27,13 +31,16 @@ class LoginService extends GetConnect {
     final response = await post<dynamic>('/login', formData);
     if (response.status.hasError) {
       if (response.bodyString == null) {
-        return Future.error(apiErrorModelToJson(ApiErrorModel(
-          status: '400',
-          message: 'Falha ao conectar no servidor',
-        )));
+        return Future.error(showConnectionFailure());
       }
       return Future.error(response.bodyString.toString());
     }
     return response.body;
   }
+
+  LoginModel? get loginBox => _box.read(_key);
+
+  void saveLogin(LoginModel login) => _box.write(_key, login);
+
+  void removeLogin() => _box.remove(_key);
 }
