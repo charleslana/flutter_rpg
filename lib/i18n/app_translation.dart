@@ -16,6 +16,10 @@ class AppTranslation {
 }
 
 final Map<String, String> enUS = {
+  'landing.page.connection': 'Connecting to the server...',
+  'landing.page.version':
+      'There is a new update available, please update the app on your store...',
+  'landing.page.start': 'Preparing to start...',
   'connection.failure': 'Failed to connect to server',
   'validation.field.empty': 'Please this field must be filled',
   'validation.field.email': 'Please, type a valid email',
@@ -40,6 +44,10 @@ final Map<String, String> enUS = {
 };
 
 final Map<String, String> ptBR = {
+  'landing.page.connection': 'Conectando no servidor...',
+  'landing.page.version':
+      'Há uma nova atualização disponível, por favor atualize a aplicação na sua loja.',
+  'landing.page.start': 'Preparando para iniciar...',
   'connection.failure': 'Falha ao conectar no servidor',
   'validation.field.empty': 'Por favor, este campo deve ser preenchido',
   'validation.field.email': 'Por favor, digite um e-mail válido',
@@ -64,6 +72,10 @@ final Map<String, String> ptBR = {
 };
 
 final Map<String, String> esES = {
+  'landing.page.connection': 'Conectando al servidor...',
+  'landing.page.version':
+      'Hay una nueva actualización disponible, actualice la aplicación en su tienda.',
+  'landing.page.start': 'Preparándonos para empezar...',
   'connection.failure': 'Error al conectar con el servidor',
   'validation.field.empty': 'Por favor este campo debe ser llenado',
   'validation.field.email': 'Por favor, escriba un correo electrónico válido',

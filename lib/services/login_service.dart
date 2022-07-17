@@ -1,4 +1,4 @@
-import 'package:flutter_rpg/constants/text_constant.dart';
+import 'package:flutter_rpg/constants/config_constant.dart';
 import 'package:flutter_rpg/models/login_model.dart';
 import 'package:flutter_rpg/services/language_service.dart';
 import 'package:flutter_rpg/utils/functions.dart';
@@ -38,7 +38,7 @@ class LoginService extends GetConnect {
     return response.body;
   }
 
-  LoginModel? get loginBox => _box.read(_key);
+  Map<String, dynamic>? get loginBox => _box.read(_key);
 
   void saveLogin(LoginModel login) => _box.write(_key, login);
 
