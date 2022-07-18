@@ -97,6 +97,7 @@ class RegisterPage extends GetView<RegisterController> {
                                 fontFamily: 'Dosis',
                               ),
                             ),
+                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
