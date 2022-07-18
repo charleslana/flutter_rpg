@@ -29,7 +29,7 @@ class LandingPage extends GetView<LandingController> {
                             child: SizedBox(
                               height: 100,
                               child: Image.asset(
-                                ImageConstant.logo,
+                                logo,
                                 fit: BoxFit.contain,
                               ),
                             ),

@@ -18,7 +18,7 @@ class SplashscreenPage extends StatelessWidget {
             child: SizedBox(
               height: 200,
               child: Image.asset(
-                ImageConstant.charlesLogo,
+                charlesLogo,
                 fit: BoxFit.contain,
               ),
             ),

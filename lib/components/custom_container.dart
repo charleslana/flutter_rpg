@@ -15,7 +15,7 @@ class CustomContainer extends StatelessWidget {
       decoration: const BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage(ImageConstant.background),
+          image: AssetImage(background),
           colorFilter: ColorFilter.mode(
             Color.fromRGBO(156, 39, 176, 0.4),
             BlendMode.overlay,
